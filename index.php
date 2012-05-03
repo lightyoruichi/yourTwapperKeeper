@@ -1,22 +1,4 @@
 <?php
-/*
-yourTwapperKeeper - Twitter Archiving Application - http://your.twapperkeeper.com
-Copyright (c) 2010 John O'Brien III - http://www.linkedin.com/in/jobrieniii
-
-This program is free software; you can redistribute it and/or
-modify it under the terms of the GNU General Public License
-as published by the Free Software Foundation; either version 2
-of the License, or (at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program; if not, write to the Free Software
-Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
-*/
 
 // Set Important / Load important
 session_start();
@@ -42,7 +24,7 @@ $logged_in = TRUE;
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
-<title>Your Twapper Keeper - Archive your own tweets</title>
+<title>Tandemic Twitter Archiver</title>
 <meta http-equiv="content-type" content="text/html;charset=utf-8" />
 <link href="resources/css/custom-theme/jquery-ui-1.8.4.custom.css" rel="stylesheet" type="text/css">
 <link href="resources/css/yourtwapperkeeper.css?v=2" rel="stylesheet" type="text/css">
@@ -54,7 +36,7 @@ $logged_in = TRUE;
 
 <div id='login'>
 <?php echo $login_status; ?> 
-<p><a href='index.php'><img src='resources/yourTwapperKeeperLogo.png'/></a></p>
+<p><a href='index.php'><img src='resources/tandemiclogo.png'/></a></p>
 </div> <!-- end login div -->
 
 <div id='header'>
@@ -87,6 +69,7 @@ if (in_array($_SESSION['access_token']['screen_name'],$admin_screen_name)) {
 </div> <!-- end header div -->
 
 <div id='main'>
+
 	<?php if (isset($_SESSION['notice'])) { ?>
 	<div class='ui-widget'><div class='ui-state-highlight ui-corner-all' style='padding:5px; margin: 5px; width:750px; margin-left:auto; margin-right:auto; text-align:center'><span class='ui-icon ui-icon-info' style='float: left'></span><b><?php echo $_SESSION['notice']; ?></b></div></div>
 	<?php
@@ -156,9 +139,15 @@ echo "</table>";
 
 </div>
 
+<?php require_once('include-search-form.php');
+
+if($_REQUEST['home_search']<>''){
+	require_once("include-search-results.php");
+}
+?>
 
 <div id='footer'>
-<p>Your TwapperKeeper - <?php echo $yourtwapperkeeper_version; ?></p>
+<p><a href="http://tandemic.com">Tandemic</a> Twitter Archive - <?php echo $yourtwapperkeeper_version; ?></p>
 </div>
 
 </body>

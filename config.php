@@ -1,4 +1,13 @@
 <?php
+
+if($_SERVER['REMOTE_ADDR']=="00.00.00.00")
+{
+  ini_set('display_errors','On');
+}
+else
+{
+  ini_set('display_errors','Off');
+} 
 /*
 yourTwapperKeeper - Twitter Archiving Application - http://your.twapperkeeper.com
 Copyright (c) 2010 John O'Brien III - http://www.linkedin.com/in/jobrieniii
@@ -21,36 +30,36 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 // LOOK AT README FOR HOW TO CONFIGURE!!!!!!!!!!
 
 /* Host Information */
-$tk_your_url = "http://www.yourexample.com/";  												// make sure to include the trailing slash
-$tk_your_dir = "/var/www/html/";  															// make sure to include the trailing slash
-$youtwapperkeeper_useragent = "Your TwapperKeeper";											// change to whatever you want!
+$tk_your_url = "http://archive.tandemic.com/";  												// make sure to include the trailing slash
+$tk_your_dir = "/archive.tandemic.com/";  															// make sure to include the trailing slash
+$youtwapperkeeper_useragent = "Tandemic Twitter Archive";											// change to whatever you want!
 
 /* Administrators - Twitter screen name(s) who can administer / start / stop archiving */
-$admin_screen_name=array('your_twitter_name'); 
+$admin_screen_name=array('tandemicarchive'); 
 
 /* Users - Twitter screen names that are allowed to use Your Twapper Keeper site - leaving commented means anyone can use site*/
-/* $auth_screen_name=array('JohnSmith','SallySue'); */
+// $auth_screen_name=array('lightyoruichi','TandemicClient','tandemicarchive'); 
 
 
 
 /* Your Twapper Keeper Twitter Account Information used to query for tweets (this is common for the site) */
-$tk_twitter_username = 'TWITTER_USERNAME';               
-$tk_twitter_password = 'TWITTER_PASSWORD';
-$tk_oauth_token = 'TOKEN';
-$tk_oauth_token_secret = 'SECRET'; 
+$tk_twitter_username = 'tandemicarchive';               
+$tk_twitter_password = 'tandemic';
+$tk_oauth_token = '377529905-9XDmYuq2VJV435vLoKLjQHHz4ZvzccDGJ7wmtrJL';
+$tk_oauth_token_secret = 'qgwU4042pvbuaXvOaySrcmPiVv3dzHicJumAVOhlWs'; 
 
 /* Your Twapper Keeper Application Information - setup at http://dev.twitter.com/apps and copy in consumer key and secret */
-$tk_oauth_consumer_key = 'KEY';
-$tk_oauth_consumer_secret = 'SECRET';
+$tk_oauth_consumer_key = 'SUA8puz0UCLLt9k3RGxIdQ';
+$tk_oauth_consumer_secret = 'Wokorby15pJSPRrMWnN8vt0iGInDc75cQQNK7jJC8';
 
 /* MySQL Database Connection Information */                                             
-define("DB_SERVER", "localhost");										// change to your hostname
-define("DB_USER", "yourdbusername");									// change to your db username
-define("DB_PASS", "TBD");												// change to your db password
-define("DB_NAME", "yourdbname"); 										// change to your db name
+define("DB_SERVER", "mysql.manifesto.my");										// change to your hostname
+define("DB_USER", "twitterarchiver");									// change to your db username
+define("DB_PASS", "thinkvantage33");												// change to your db password
+define("DB_NAME", "twitter_archivers"); 										// change to your db name
 
 /* Don't mess with this unless you want to get your hands dirty */
-$yourtwapperkeeper_version = "version 0.5.6";
+$yourtwapperkeeper_version = "version 0.5.5";
 $archive_process_array = array('yourtwapperkeeper_crawl.php','yourtwapperkeeper_stream.php','yourtwapperkeeper_stream_process.php');
 $twitter_api_sleep_min = 11;
 $stream_process_stack_size = 500;

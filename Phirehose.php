@@ -15,7 +15,7 @@ abstract class Phirehose
   /**
    * Class constants
    */
-  const URL_BASE         = 'https://stream.twitter.com/1/statuses/';
+  const URL_BASE         = 'http://stream.twitter.com/1/statuses/';
   const FORMAT_JSON      = 'json';
   const FORMAT_XML       = 'xml';
   const METHOD_FILTER    = 'filter';
@@ -463,7 +463,7 @@ abstract class Phirehose
       $streamIP = $streamIPs[rand(0, (count($streamIPs) - 1))];
       $this->log('Connecting to ' . $streamIP);
       
-      @$this->conn = fsockopen($scheme . $streamIP, 443, $errNo, $errStr, $this->connectTimeout);
+      @$this->conn = fsockopen($scheme . $streamIP, 80, $errNo, $errStr, $this->connectTimeout);
   
       // No go - handle errors/backoff
       if (!$this->conn || !is_resource($this->conn)) {

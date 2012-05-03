@@ -284,6 +284,23 @@ function startProcess($cmd) {
     return ($pid);
 }	
 
+function getTweetsByDay($id,$time){
+	
+	for($i=1;$i<8;$i++){
+		//$start = mktime(0,0,0 );
+		$endTime = $time;
+		$startTime = $endTime-86400;
+		
+		$query = "Select count(*) as num from z_$id where time between $startTime and $endTime";
+		$res = mysql_query($query);
+		$row = mysql_fetch_array($res);
+		return $row['num'];
+		/*$res = mysql_query($query);
+		while($row = mysql_fetch_array($res)){
+			$data[] = $res[''];	
+		}*/
+	}
+}	
 
 
 }

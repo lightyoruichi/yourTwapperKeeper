@@ -1,9 +1,9 @@
 10
 
 dir
-8
-https://yourtwapperkeeper.googlecode.com/svn/trunk/resources/js
-https://yourtwapperkeeper.googlecode.com/svn
+13
+http://yourtwapperkeeper.googlecode.com/svn/trunk/resources/js
+http://yourtwapperkeeper.googlecode.com/svn
 
 
 
@@ -32,7 +32,7 @@ file
 
 
 
-2010-11-13T01:03:22.000000Z
+2011-09-22T04:50:00.217129Z
 7d548d4eda7021964680ab00f18fbd7a
 2010-10-11T13:06:37.879956Z
 5
@@ -66,7 +66,7 @@ file
 
 
 
-2010-11-13T01:03:22.000000Z
+2011-09-22T04:50:00.221129Z
 10092eee563dec2dca82b77d2cf5a1ae
 2010-10-11T13:06:37.879956Z
 5

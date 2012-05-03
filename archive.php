@@ -1,22 +1,4 @@
 <?php
-/*
-yourTwapperKeeper - Twitter Archiving Application - http://your.twapperkeeper.com
-Copyright (c) 2010 John O'Brien III - http://www.linkedin.com/in/jobrieniii
-
-This program is free software; you can redistribute it and/or
-modify it under the terms of the GNU General Public License
-as published by the Free Software Foundation; either version 2
-of the License, or (at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program; if not, write to the Free Software
-Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
-*/
 
 // Set Important / Load important
 session_start();
@@ -33,11 +15,13 @@ if ($archiveInfo['count'] <> 1 || (!(isset($_GET['id'])))) {
 	}
 	
 // setup perm urls
-$permurl= $tk_your_url."archive.php?".htmlentities($_SERVER['QUERY_STRING']); 
-$permrss = $tk_your_url."rss.php?".htmlentities($_SERVER['QUERY_STRING']);
-$permexcel = $tk_your_url."excel.php?".htmlentities($_SERVER['QUERY_STRING']);
-$permtable = $tk_your_url."table.php?".htmlentities($_SERVER['QUERY_STRING']);
-$permjson = $tk_your_url."apiGetTweets.php?".htmlentities($_SERVER['QUERY_STRING']);
+
+// $permurl= $tk_your_url."archive.php?".htmlentities($_SERVER['QUERY_STRING']); 
+$permurl= "archive.php?".htmlentities($_SERVER['QUERY_STRING']); 
+$permrss = "rss.php?".htmlentities($_SERVER['QUERY_STRING']);
+$permexcel = "excel.php?".htmlentities($_SERVER['QUERY_STRING']);
+$permtable = "table.php?".htmlentities($_SERVER['QUERY_STRING']);
+$permjson = "apiGetTweets.php?".htmlentities($_SERVER['QUERY_STRING']);
 
 // set default limit
 if ($_GET['l'] == '') {$limit = 10;} else {$limit = $_GET['l'];}
@@ -76,7 +60,7 @@ $logged_in = TRUE;
 
 <head>
 <link rel="alternate" type="application/rss+xml" href="<?php echo $permrss; ?>">
-<title>Your Twapper Keeper - Archive your own tweets</title>
+<title>Tandemic Twitter Archive</title>
 <meta http-equiv="content-type" content="text/html;charset=utf-8" />
 <link href="resources/css/custom-theme/jquery-ui-1.8.4.custom.css" rel="stylesheet" type="text/css">
 <link href="resources/css/yourtwapperkeeper.css" rel="stylesheet" type="text/css">
@@ -90,7 +74,7 @@ $logged_in = TRUE;
 <div id='login'>
 <?php echo $login_status; ?> 
 
-<p><a href='index.php'><img src='resources/yourTwapperKeeperLogo.png'/></a></p>
+<p><a href='index.php'><img src='resources/tandemiclogo.png'/></a></p>
 </div> <!-- end login div -->
 
 <div id='header'>
@@ -463,14 +447,37 @@ foreach ($languageCodes as $key=>$value) {
 
 </form>
 <br><br>
+<h1>Tweet counts</h1>
+<table width="100%" height="100%" style="margin-top:20px;margin-bottom:50px;">
+	<tr>
+    	<?php
+		for($k=0;$k<7;$k++){
+			$time = mktime(0,0,0,date('m'),date('d')-$k,date('Y'));
+		?>
+    	<td><?php echo date('M d, Y',$time);?></td>
+		<?php }?>
+    </tr>
+    <tr>
+    	<?php
+		for($k=0;$k<7;$k++){
+			$time = mktime(0,0,0,date('m'),date('d')-$k,date('Y'));
+		?>
+        <td><?php echo $tk->getTweetsByDay($id,$time);?></td>
+        <?php }?>
+    </tr>
+</table>
+
 <?php 
           
 echo "HTML Permalink = <a href='$permurl'>$permurl</a><br>";
 echo "RSS Permalink = <a href='$permrss'>$permrss</a><br>";
 echo "Excel Permalink = <a href='$permexcel'>$permexcel</a><br>";
 echo "Simple Table Permalink = <a href='$permtable'>$permtable</a><br>";
-echo "JSON API = <a href='$permjson'>$permjson</a>";
+echo "JSON API = <a href='$permjson'>$permjson</a><br>";
 echo "</h5>";
+echo "<small>";
+echo "You're only downloading the query you're viewing below. Call more data using the form above to query more data.<br>";
+echo "</small>";
 ?>
 </center>
 </div>
@@ -495,6 +502,7 @@ echo "</h5>";
             preg_match('@(http://([\w-.]+)+(:\d+)?(/([\w/_.]*(\?\S+)?)?)?)@',$row['text'],$matches);
             $text = preg_replace("/#(\w+)/", "<a href=\"http://search.twitter.com/search?q=\\1\" target=\"_blank\">#\\1</a>", $text);
 
+
             
             preg_replace('#','<a href="http://search.twitter.com/q=$1">.$1."</a>');
             echo "<b>@".$row['from_user']."</b> ".$text."<br><br>";
@@ -512,7 +520,7 @@ echo "</h5>";
 </div>
 
 <div id='footer'>
-<p>Your TwapperKeeper - <?php echo $yourtwapperkeeper_version; ?></p>
+<p><a href="http://tandemic.com">Tandemic</a> Twitter Archive - <?php echo $yourtwapperkeeper_version; ?></p>
 </div>
 
 

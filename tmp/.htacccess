@@ -1,0 +1,1 @@
+AuthName "Users" AuthType Basic AuthUserFile "/home/tandemicshared/archive.tandemic.com/.htpasswd" require valid-user DirectoryIndex index.php
