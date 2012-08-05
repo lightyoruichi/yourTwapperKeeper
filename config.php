@@ -44,17 +44,17 @@ $admin_screen_name=array('tandemicarchive');
 /* Your Twapper Keeper Twitter Account Information used to query for tweets (this is common for the site) */
 $tk_twitter_username = 'tandemicarchive';
 $tk_twitter_password = '';
-$tk_oauth_token = '377529905-3qb9KazyjvTSqxLFklZMRV532on82jbn6SFbqNBu';
-$tk_oauth_token_secret = 'tsmFkDr1m7fOqbBmdNLjdHgEWxdT0d7udfRZlcVslUk';
+$tk_oauth_token = '';
+$tk_oauth_token_secret = '';
 
 /* Your Twapper Keeper Application Information - setup at http://dev.twitter.com/apps and copy in consumer key and secret */
-$tk_oauth_consumer_key = 'Mb7oeW78MtywLkl2TWvg';
-$tk_oauth_consumer_secret = 'cV46oF37AO5kfY8ZguAjuP20iH6sDfDnc2rmr1J5yuw';
+$tk_oauth_consumer_key = '';
+$tk_oauth_consumer_secret = '';
 
 /* MySQL Database Connection Information */
 define("DB_SERVER", "localhost");                                                                               // change to your hostname
 define("DB_USER", "root");                                                                      // change to your db username
-define("DB_PASS", "makeweb192");                                                                                                // change to your db password
+define("DB_PASS", "");                                                                                                // change to your db password
 define("DB_NAME", "tweets");    
 
 /* Don't mess with this unless you want to get your hands dirty */
