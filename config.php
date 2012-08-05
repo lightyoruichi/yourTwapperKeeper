@@ -43,7 +43,7 @@ $admin_screen_name=array('tandemicarchive');
 
 /* Your Twapper Keeper Twitter Account Information used to query for tweets (this is common for the site) */
 $tk_twitter_username = 'tandemicarchive';
-$tk_twitter_password = 'tandemic';
+$tk_twitter_password = '';
 $tk_oauth_token = '377529905-3qb9KazyjvTSqxLFklZMRV532on82jbn6SFbqNBu';
 $tk_oauth_token_secret = 'tsmFkDr1m7fOqbBmdNLjdHgEWxdT0d7udfRZlcVslUk';
 
